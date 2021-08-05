@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Jakilada Fly | IG Project</title>
+		<link rel="stylesheet" type="text/css" href="style/index.css" />
+        <script type="text/javascript" src="javascript/three.js"></script>
+        <script type="text/javascript" src='javascript/threex.keyboardstate.js'></script>
+        <script type="text/javascript" src="javascript/TweenMax.js"></script>
+        <script type = "text/javascript" src="javascript/index.js"></script>
+        <link rel="shortcut icon" href="img/pageIcon.ico">        
+        <link rel="Stylesheet" type="text/css" href="./style/index.css">
+        <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Luckiest+Guy|Orbitron|Russo+One|Shadows+Into+Light|Teko&display=swap" rel="stylesheet"> 
+    </head>
+
+    <style>
+    </style>
+    <body>
+        
+        <div class="game-holder" id="gameHolder" display= "block">
+            <div id="menu" class="menu">
+
+                <div id="menuoption">
+                    <div class="frame1" id="menu">
+                        <img src="img/logo.png">
+                    </div> 
+                    <div class="frame" id="menu">
+                        <div class="btn-group" id="menu"> 
+
+                            <br>
+                            <span><a id="start"></a></span>
+                            <br>
+
+                            <br>
+                            <span><b id="selectscenario"></b></span>
+                            <br>
+
+                            <br>
+                            <span><c id="howtoplay"></c></span>
+                            <br>
+
+                            <br>
+                            <span><d id="credits"></d></span>
+                            <br>
+
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div id="selectscenario-div" class="box-wrap">
+                    <div>
+                        <img class = "imgscen" id="scenario0" src="img/scenario/desert.png" alt="">
+                    </div>
+                    <br>
+
+                    <div>
+                        <img class = "imgscen" id="scenario1" src="img/scenario/country.png" alt="">
+                    </div>
+                    <br>
+
+                    <div>
+                        <img class = "imgscen" id="scenario2" src="img/scenario/moon.png" alt="">
+                    </div>
+                    <br>
+                        <span><i id="backssp"></i></span>
+                    <br>
+                </div>
+
+                <div id="howtoplay-div" class="howtoplay-divc">
+                    <div class="inner">
+                        <h4>Airplane controls and useful instructions</h4>
+                            <img style="width: 40px; height: 40px" src="img/keyboard/w.png" alt="W"> or <img style="width: 40px; height: 40px" src="img/keyboard/cursor-up.png" alt="A"> to move up the plane<br>
+                            <img style="width: 40px; height: 40px; margin-left: 0.5%;" src="img/keyboard/a.png" alt="A"> or <img style="width: 40px; height: 40px" src="img/keyboard/cursor-left.png" alt="A"> to move left the plane<br>
+                            <img style="width: 40px; height: 40px; margin-left: 4%;" src="img/keyboard/s.png" alt="S"> or <img style="width: 40px; height: 40px" src="img/keyboard/cursor-down.png" alt="A"> to move down the plane<br>
+                            <img style="width: 40px; height: 40px; margin-left: 2.5%;"  src="img/keyboard/d.png" alt="D"> or <img style="width: 40px; height: 40px" src="img/keyboard/cursor-right.png" alt="A"> to move right the plane<br>
+                            <img style="width: 40px; height: 40px; margin-left: 5%;" src="img/keyboard/p.png" alt="P"> to paused and resumed the game</tr><br>
+                            <p>Invincibility (3 secs) after a collision</p>
+                            <p>Hit a green plus to restore one life</p>
+                            <!--<img style="width: 40px; height: 40px; margin-left: -13.1%;" src="img/keyboard/m.png" alt="M"> to return to the menu</tr>-->
+                        <br>
+                            <span><i id="backhtp"></i></span>
+                        <br>
+                    </div>
+                </div>
+
+                <div id="credits-div" class="credits-divc">
+                    <h4>The project has been developed thanks to the combined effort of all members of our team:</h4>
+                    <p>
+                        Antonio Marigliano <br>
+                        Daniele Michelori <br> 
+                        Ilaria Ponzianelli <br> 
+                        Gianmarco Salvi
+                    </p>
+                    <br>
+                        <span><i id="backcdt"></i></span>
+                    <br>
+                </div>
+                
+                <br>
+                <div>
+                    <audio id="bonusLifeAudio">
+                        <source src="audio/bonus_life.mp3" type="audio/mp3">
+                    </audio>
+                    <audio id="theme_song" autoplay muted> 
+                        <source src="audio/theme_song.mp3" type="audio/mp3">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <audio id="animalCollAudio">
+                        <source src="audio/animal_collision.wav" type="audio/wav">
+                    </audio>
+
+                    <audio id="shipCollAudio">
+                        <source src="audio/ship_collision.wav" type="audio/wav">
+                    </audio>
+
+                    <audio id="gameOverAudio">
+                        <source src="audio/game_over.wav">
+                    </audio> 
+                </div>
+
+                <!--PAUSED-->
+                </div>
+                <div class="world" id="world"></div>
+
+                <div id="pausedspan" style= "display: none; position: absolute; left: 42.5%; top: 20%">
+                    <div class="frame1">
+                        <img style= "left: -17%" class = "imgzone" src="img/paused.png">
+                    </div> 
+                    <div class="frame">
+                        <div class="buttonzone"> 
+
+                            <span><h id="resumePaused"></h></span>
+                            <br>
+            
+                            <br>
+                            <span><g id="playAgainPaused"></g></span>
+                            <br>
+
+                            <br>
+                            <span><f id="backToMenuPaused"></f></span>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!--GAME OVER-->
+                <div id="gameOver" style= "display: none; position: absolute; left: 42.5%; top: 20%">
+                    <div class="frame1">
+                        <img style= "left: -50%; top: -10%" class = "imgzone2" src="img/game over.png" >
+                    </div>
+                    <div>
+                        <div id="levelGO" style= "display: none;" class="levelGO"> 
+                            <div class="label">Level</div>
+                            <div id="levelValueGO" class="levelValueGO"></div>
+                        </div>                
+                        <div id="recordGO" style= "display: none;" class="recordGO"> 
+                            <div class="label">Record</div>
+                            <div id="recordValueGO" class="recordValueGO"></div>
+                        </div>
+                        <div id="distGO" style = "display: none;" class="distGO">
+                            <div class="label">Score</div>
+                            <div id="distValueGO" class="distValueGO">000</div>
+                        </div>
+                    </div>
+                    <div class="frame">
+                        <div class="buttonzone2"> 
+                            
+                            <span><e id="restartGameOver"></e></span>
+                            <br>
+            
+                            <br>
+                            <span><f id="backToMenuGameOver"></f></span>
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dist" style = "display: none;" class="dist">
+                    <div class="label">Score</div>
+                    <div id="distValue" class="distValue">000</div>
+                </div>
+        
+                
+                <div id="health" style= "display: none;">
+                    <div class="label_health">Health</div>
+        
+                    <div id="h1" class="heart">
+                    </div>
+                    <div id="h2" class="heart">
+                    </div>
+                    <div id="h3" class="heart">
+                    </div>
+                    
+                </div>
+        
+                <div id="level" style= "display: none;" class="level"> 
+                    <div class="label">Level</div>
+                    <div id="levelValue" class="levelValue"></div>
+                </div>
+        
+                <div id="record" style= "display: none;" class="record"> 
+                    <div class="label">Record</div>
+                    <div id="recordValue" class="recordValue"></div>
+                </div>
+
+            </div>
+        </div>
+        
+        <div id="audioButton">
+            <img id="audioImg" src="img/sound_off.png" class="audioButton"> 
+        </div>
+
+    </body>
+</html>
